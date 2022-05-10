@@ -4,12 +4,11 @@ author: "Vivian Vy Le"
 date: '2022-05-10'
 output: 
   prettydoc::html_pretty:
-    toc: TRUE
     theme: hpstr
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.path = "../Output/")
 ```
 
 # Introduction
@@ -28,7 +27,7 @@ library(ggplot2)
 library(here)
 library(palettetown)
 library(magick)
-library(kableExtra)
+library(rstatix)
 ```
 
 ### Load data
@@ -72,7 +71,7 @@ We wash and place the worms on the loading zone of the plate. Once the worms are
 The raw data consists of the number of worms in the attractant zone, the number of worms in the counter-attractant zone, and the number of worms dispersed from the loading zone. I calculated the chemotaxis index (CI) for the data set.
 
 
-## gcy-22 mutants 
+## *gcy-22* mutants 
 ```{r}
 salt_data <- salt %>%
   mutate(total = (A+C)) %>% #adding A and C for total worm participating in the assay
@@ -92,9 +91,7 @@ gcy_data <- salt_data %>%
   select(Strain, Salt, CI) %>%
   group_by(Strain, Salt) %>%
   summarise(average = mean(CI, na.rm = TRUE), #calculating for average
-            st_dev = sd(CI, na.rm = TRUE)) %>% #calculating for standard deviation
-  kbl() %>%
-  kable_minimal()
+            st_dev = sd(CI, na.rm = TRUE))#calculating for standard deviation
 gcy_data
 ```
 
@@ -117,9 +114,18 @@ plotbase(gcy_data, x, y) +
 ```
 
 
-## All mutants
+## Other genes involved in chemosensation
 
 We also looked at salt responses for other genes involved in chemosensation: *daf-11*, *che-1*, and *tax-2*.
+
+*daf-11* is another guanylyl cyclase.
+
+*che-1* is a transcription factor necessary for the expression of a sensory amphid neuron.
+
+*tax-2* is a cGMP-gated channel at the end of the chemosensation pathway. 
+
+![Signaling pathway](http://www.wormbook.org/chapters/www_chemosensation/sensefig4.jpg)
+Source: Wormbook
 
 ```{r}
 allgenes_data <- allgenes %>%
@@ -166,20 +172,27 @@ tax
 
 
 ```{r, daf11_plot, outwidth = "60%", fig.align='center'}
+
+daf_pal <- c("#27935C", "#5ad5c5", "#ff7b73")
+
 plotbase(daf, x, y) +
-  scale_fill_manual(values = pokepal(3)) +
+  scale_fill_manual(values = daf_pal) +
   labs(subtitle = "daf-11 mutants")
 ```
 
 ```{r, che1_plot, outwidth = "60%", fig.align='center'}
+che_pal <- c("#27935C", "#de4141", "#399A40")
+
 plotbase(che1, x, y) +
-  scale_fill_manual(values = pokepal(3)) +
+  scale_fill_manual(values = che_pal) +
   labs(subtitle = "che-1 mutants")
 ```
 
 ```{r, tax2_plot, outwidth = "60%", fig.align='center'}
+tax_pal <- c("#27935C", "#833100")
+
 plotbase(tax, x, y) +
-  scale_fill_manual(values = pokepal(3)) +
+  scale_fill_manual(values = tax_pal) +
   labs(subtitle = "tax-2 mutant")
 ```
 
