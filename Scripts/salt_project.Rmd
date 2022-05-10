@@ -28,6 +28,7 @@ library(here)
 library(palettetown)
 library(rstatix)
 library(kableExtra)
+library(ggpubr)
 ```
 
 ### Load data
@@ -104,14 +105,16 @@ gcy_table
 ```{r, gcy22_plot, outwidth = "60%", fig.align='center'}
 plotbase <- function (data, x, y){
   ggplot(data = data, aes(x = Salt, y = average, fill = Strain)) + #creating a plot function for the data
-    geom_col(position = "dodge") +
+    geom_col(position = "dodge") + #grouping the bars
     ylim(-1,1) + #setting y axis limits for graph
-    labs(title = "Salt Chemotaxis",
-         x = "Salts",
+    labs(title = "Salt Chemotaxis", #title of the plots stay the same
+         x = "Salts", #x- and y-axis are the same
          y = "Chemotaxis Index (CI)") +
     theme(plot.title = element_text(hjust = 0.5),
           plot.subtitle = element_text(hjust = 0.5),
-          axis.title = element_text(face = "bold"))
+          axis.title = element_text(face = "bold"),
+          panel.background = element_rect(fill = "white"),
+          axis.line = element_line())
 }
 plotbase(gcy_data, x, y) +
   scale_fill_manual(values = pokepal(3)) +
@@ -179,7 +182,7 @@ tax
 
 ### Plot for *daf-11*, *che-1*, and *tax-2*
 
-
+By separating the data for each gene, this would show a better comparison between wildtype and mutant strains.
 
 ```{r, daf11_plot, outwidth = "60%", fig.align='center'}
 
