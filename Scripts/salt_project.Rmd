@@ -26,7 +26,6 @@ library(tidyverse)
 library(ggplot2)
 library(here)
 library(palettetown)
-library(magick)
 library(rstatix)
 ```
 
@@ -181,7 +180,7 @@ plotbase(daf, x, y) +
 ```
 
 ```{r, che1_plot, outwidth = "60%", fig.align='center'}
-che_pal <- c("#27935C", "#de4141", "#399A40")
+che_pal <- c("#27935C", "#de4141", "#399A40") #creating a palette for che-1 plot
 
 plotbase(che1, x, y) +
   scale_fill_manual(values = che_pal) +
@@ -189,7 +188,7 @@ plotbase(che1, x, y) +
 ```
 
 ```{r, tax2_plot, outwidth = "60%", fig.align='center'}
-tax_pal <- c("#27935C", "#833100")
+tax_pal <- c("#27935C", "#833100") #creating a palette for tax-2 plot
 
 plotbase(tax, x, y) +
   scale_fill_manual(values = tax_pal) +
