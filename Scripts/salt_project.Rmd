@@ -106,6 +106,7 @@ gcy_table
 plotbase <- function (data, x, y){
   ggplot(data = data, aes(x = Salt, y = average, fill = Strain)) + #creating a plot function for the data
     geom_col(position = "dodge") + #grouping the bars
+    geom_hline(yintercept = 0) +
     ylim(-1,1) + #setting y axis limits for graph
     labs(title = "Salt Chemotaxis", #title of the plots stay the same
          x = "Salts", #x- and y-axis are the same
