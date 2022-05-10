@@ -26,9 +26,7 @@ library(tidyverse)
 library(ggplot2)
 library(here)
 library(palettetown)
-library(rstatix)
 library(kableExtra)
-library(ggpubr)
 ```
 
 ### Load data
