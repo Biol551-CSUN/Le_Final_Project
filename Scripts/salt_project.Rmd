@@ -19,6 +19,9 @@ While all the information on chemosensation is in the *Caenorhabditis elegans*, 
 
 It is unclear if the *gcy* genes in *P.pacificus* have similar gene functions in chemotaxis towards water soluble salts and are expressed in the amphid sensory neuron. With *P. pacificus*' host association towards the Oriental beetle, it would be interesting to study if cGMP signaling contributes to the species' host-seeking abilities.
 
+![Signaling pathway](http://www.wormbook.org/chapters/www_chemosensation/sensefig4.jpg)
+Source: Wormbook
+
 ## Load libraries
 
 ```{r}
@@ -127,12 +130,10 @@ We also looked at salt responses for other genes involved in chemosensation: *da
 
 *daf-11* is another guanylyl cyclase.
 
-*che-1* is a transcription factor necessary for the expression of a sensory amphid neuron.
+*che-1* is a transcription factor necessary for the expression of a sensory amphid neuron, where most guanylyl cyclase proteins are expressed in *C. elegans*.
 
 *tax-2* is a cGMP-gated channel at the end of the chemosensation pathway. 
 
-![Signaling pathway](http://www.wormbook.org/chapters/www_chemosensation/sensefig4.jpg)
-Source: Wormbook
 
 ```{r}
 allgenes_data <- allgenes %>%
@@ -168,15 +169,15 @@ genes_table
 ```{r}
 daf<-genes_ctx %>% #separating for daf-11
   filter(Strain == "wildtype (PS312)" | Strain == "daf-11 (mok83)" | Strain == "daf-11 (mok84)")
-daf
+glimpse(daf)
 
 che1 <-genes_ctx %>% #separting for che-1
   filter(Strain == "wildtype (PS312)" | Strain == "che-1 (ot5012)" | Strain == "che-1 (ot5013)")
-che1
+glimpse(che1)
 
 tax <-genes_ctx %>% #separating for tax-2
    filter(Strain == "wildtype (PS312)" | Strain == "tax-2 (mok59)")
-tax
+glimpse(tax)
 ```
 
 ### Plot for *daf-11*, *che-1*, and *tax-2*
