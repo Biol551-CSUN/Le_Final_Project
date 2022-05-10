@@ -27,6 +27,7 @@ library(ggplot2)
 library(here)
 library(palettetown)
 library(rstatix)
+library(kableExtra)
 ```
 
 ### Load data
@@ -90,8 +91,13 @@ gcy_data <- salt_data %>%
   select(Strain, Salt, CI) %>%
   group_by(Strain, Salt) %>%
   summarise(average = mean(CI, na.rm = TRUE), #calculating for average
-            st_dev = sd(CI, na.rm = TRUE))#calculating for standard deviation
-gcy_data
+            st_dev = sd(CI, na.rm = TRUE)) #calculating for standard deviation
+
+gcy_table <- gcy_data %>%
+  kbl() %>%
+  kable_minimal() %>%
+  kable_styling(full_width = FALSE)
+gcy_table
 ```
 
 ### Plot for *gcy-22* mutants
@@ -147,7 +153,12 @@ genes_ctx <- allgenes_data %>%
   summarise(average = mean(CI, na.rm = TRUE), #calculating for averages
             st_dev = sd(CI, na.rm = TRUE)) #calculating for standard deviation
 
-genes_ctx
+
+genes_table <- genes_ctx %>%
+  kbl() %>%
+  kable_minimal() %>%
+  kable_styling(full_width = FALSE)
+genes_table
 
 ```
 
