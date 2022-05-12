@@ -1,8 +1,13 @@
 ﻿Variable Name,description,
 strain,name strains of worms used,
-,PS312,Pristionchus pacificus wildtype strain
-,csu79,Pristionchus pacificus gcy-22 mutant 
-,csu80,Pristionchus pacificus gcy-22 mutant
+,wildtype (PS312),Pristionchus pacificus wildtype strain
+,gcy-22 (csu79),Pristionchus pacificus gcy-22 mutant 
+,gcy-22 (csu80),Pristionchus pacificus gcy-22 mutant
+,che-1 (ot5012),Pristionchus pacificus che-1 mutant 
+,che-1 (ot5013),Pristionchus pacificus che-1 mutant 
+,daf-11 (mok83),Pristionchus pacificus daf-11 mutant 
+,daf-11 (mok84),Pristionchus pacificus daf-11 mutant 
+,tax-2 (mok59),Pristionchus pacificus tax-2 mutant 
 Salt,"Salt used as attraction, the concentration is at 2.5 M",
 ,NH4Br,Ammonium bromide
 ,NH4I,Ammonium iodide
